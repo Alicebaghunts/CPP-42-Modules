@@ -3,35 +3,22 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook()
-{
-    nextIndex = 0;
-    totalContacts = 0;
-}
-
 int main()
 {
     PhoneBook pb;
-    std::string command;
+    std::string cmd;
 
     while (true)
-    {
-        std::cout << "Enter command: ";
-        std::getline(std::cin, command);
+	{
+        std::cout << "Enter command - ADD, SEARCH or EXIT: ";
+        std::getline(std::cin, cmd);
 
-        if (command == "ADD")
-        {
-            // հարցնում ես 5 field
-            // ստեղծում ես Contact
-            // pb.addContact(...)
-        }
-        else if (command == "SEARCH")
-        {
-            // pb.displayContacts()
-            // index հարցնում ես
-            // pb.searchContact(index)
-        }
-        else if (command == "EXIT")
+        if (cmd == "ADD")
+            pb.promptAddContact();
+        else if (cmd == "SEARCH")
+            pb.promptIndexAndDisplay();
+        else if (cmd == "EXIT")
             break;
     }
+    return 0;
 }
