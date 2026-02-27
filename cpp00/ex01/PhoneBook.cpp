@@ -18,17 +18,43 @@ static std::string formatField(const std::string &str)
     return str;
 }
 
-bool isNumber(const std::string& str)
+bool isNumber(char c)
 {
-    if (str.empty())
-        return false;
+        if (c < '0' || c > '9')
+            return false;
+    return true;
+}
 
-    for (size_t i = 0; i < str.length(); i++)
+bool checkingFirstAndLastName(const std::string &name)
+{
+    for (std::string::size_type i = 0; i < name.length(); i++)
     {
-        if (str[i] < '0' || str[i] > '9')
+        if (!std::isalpha(name[i]))
             return false;
     }
     return true;
+}
+
+bool checkingPhonekNumber(const std::string &phone_number)
+{
+    for (std::string::size_type i = 0; i < phone_number.length(); i++)
+    {
+        if (!isNumber(phone_number[i]))
+            return false;
+    }
+    return true;
+}
+
+int checkingCommands(const std::string &first_name,
+	const std::string &last_name, const std::string &phone_number)
+{
+    if (!checkingFirstAndLastName(first_name))
+        return F_NAME;
+    if (!checkingFirstAndLastName(last_name))
+        return L_NAME;
+    if (!checkingPhonekNumber(phone_number))
+        return P_NUMBER;
+    return 0;
 }
 
 void   PhoneBook::promptAddContact()
@@ -53,12 +79,22 @@ void   PhoneBook::promptAddContact()
 	std::getline(std::cin, dark_sec);
 
 	if (first_name.empty() || last_name.empty() || nick_name.empty()
-		|| phone_num.empty() || dark_sec.empty())
-	{
-		std::cout << "\033[0;30mAll fields must be non-empty!\033[0m" << std::endl;
+		|| phone_num.empty() || dark_sec.empty()){
+		std::cout << "\033[0;30m× All fields must be non-empty!\033[0m" << std::endl;
 		return ;
 	}
-		
+    if (checkingCommands(first_name, last_name, phone_num) == F_NAME){
+        std::cout << "\033[0;30m× First Name format is incorrect! Use only letters.\033[0m\n";
+        return ;
+    }
+    else if (checkingCommands(first_name, last_name, phone_num) == L_NAME){
+        std::cout << "\033[0;30m× Last Name format is incorrect! Use only letters.\033[0m\n";
+        return ;
+    }
+    else if (checkingCommands(first_name, last_name, phone_num) == P_NUMBER){
+        std::cout << "\033[0;30m× Phone Number format is incorrect! Use only digits.\033[0m\n";
+        return ;
+    }
 	contact.setContact(first_name, last_name, nick_name, phone_num, dark_sec);
 	addContact(contact);
 }
@@ -79,14 +115,14 @@ void PhoneBook::promptIndexAndDisplay() const
     {
         if (idx_str[i] < '0' || idx_str[i] > '9')
         {
-            std::cout << "\033[0;30mInvalid input!\033[0m" << std::endl;
+            std::cout << "\033[0;30m× Invalid input!\033[0m" << std::endl;
             return ;
         }
     }
     int idx = atoi(idx_str.c_str());
     if (idx < 0 || idx >= getTotalContacts())
     {
-        std::cout << "\033[0;30mInvalid index!\033[0m" << std::endl;
+        std::cout << "\033[0;30m× Invalid index!\033[0m" << std::endl;
         return ;
     }
     displayContactDetails(idx);
@@ -126,11 +162,17 @@ void PhoneBook::displayContacts() const
 
     int colWidth = 10;
 
+    std::cout << std::string(colWidth, '-')
+              << std::string(colWidth, '-')
+              << std::string(colWidth, '-')
+              << std::string(colWidth, '-')
+              << std::endl;
+
     std::cout << "|" << std::setw(5)  << "Index"
-                << "|" << std::setw(colWidth) << "First Name"
-                << "|" << std::setw(colWidth) << "Last Name"
-                << "|" << std::setw(colWidth) << "Nickname"
-                << "|" << std::endl;
+              << "|" << std::setw(colWidth) << "First Name"
+              << "|" << std::setw(colWidth) << "Last Name"
+              << "|" << std::setw(colWidth) << "Nickname"
+              << "|" << std::endl;
 
     std::cout << "|" << std::string(5, '-')
               << "|" << std::string(colWidth, '-')
@@ -138,7 +180,7 @@ void PhoneBook::displayContacts() const
               << "|" << std::string(colWidth, '-')
               << "|" << std::endl;
 
-    for (int i = 0; i < totalContacts; i++)
+    for (std::size_t i = 0; i < static_cast<std::size_t>(totalContacts); i++)
     {
         std::cout << "|"
                   << std::setw(5) << i << "|"
@@ -147,4 +189,10 @@ void PhoneBook::displayContacts() const
                   << std::setw(colWidth) << formatField(contacts[i].getField(Contact::NICKNAME)) << "|"
                   << std::endl;
     }
+
+    std::cout << std::string(colWidth, '-')
+              << std::string(colWidth, '-')
+              << std::string(colWidth, '-')
+              << std::string(colWidth, '-')
+              << std::endl;
 }

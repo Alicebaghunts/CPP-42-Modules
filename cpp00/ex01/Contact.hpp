@@ -3,6 +3,12 @@
 
 # include <string>
 
+# define F_NAME 1
+# define L_NAME 2
+# define N_NAME 3
+# define P_NUMBER 4
+# define D_SECRET 5
+
 class Contact
 {
   public:
