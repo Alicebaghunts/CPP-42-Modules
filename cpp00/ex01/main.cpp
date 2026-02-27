@@ -7,7 +7,7 @@ int main()
 
     while (true)
     {
-        std::cout << "Enter command - ADD, SEARCH or EXIT: ";
+        std::cout << "Enter command ➤ \033[0;36mADD, SEARCH or EXIT → \033[0m";
         if (!std::getline(std::cin, cmd))
         {
             std::cout << std::endl;
@@ -23,7 +23,7 @@ int main()
         else if (cmd == "EXIT")
             break;
         else
-            std::cout << "Command not found!" << std::endl;
+            std::cout << "\033[0;30mCommand not found! \033[0m" << std::endl;
     }
     return 0;
 }
