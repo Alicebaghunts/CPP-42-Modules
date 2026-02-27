@@ -1,6 +1,4 @@
 #include "PhoneBook.hpp"
-#include <iostream>
-#include <iomanip>
 
 PhoneBook::PhoneBook()
 {
@@ -20,28 +18,17 @@ static std::string formatField(const std::string &str)
     return str;
 }
 
-void PhoneBook::displayContacts() const
+bool isNumber(const std::string& str)
 {
-    if (totalContacts == 0)
-    {
-        std::cout << "PhoneBook is empty." << std::endl;
-        return ;
-    }
+    if (str.empty())
+        return false;
 
-    std::cout << std::setw(10) << "Index" << "|"
-        << std::setw(10) << "First Name" << "|"
-        << std::setw(10) << "Last Name" << "|"
-        << std::setw(10) << "Nickname" << "|"
-        << std::endl;
-
-    for (int i = 0; i < totalContacts; i++)
+    for (size_t i = 0; i < str.length(); i++)
     {
-        std::cout << std::setw(10) << i << "|"
-            << std::setw(10) << formatField(contacts[i].getField(Contact::FIRST_NAME)) << "|"
-            << std::setw(10) << formatField(contacts[i].getField(Contact::LAST_NAME)) << "|"
-            << std::setw(10) << formatField(contacts[i].getField(Contact::NICKNAME))
-            << std::endl;
+        if (str[i] < '0' || str[i] > '9')
+            return false;
     }
+    return true;
 }
 
 void   PhoneBook::promptAddContact()
@@ -60,7 +47,7 @@ void   PhoneBook::promptAddContact()
 	std::getline(std::cin, last_name);
 	std::cout << "Nick Name : ";
 	std::getline(std::cin, nick_name);
-	std::cout << "Phone Nimber : ";
+	std::cout << "Phone Number : ";
 	std::getline(std::cin, phone_num);
 	std::cout << "Darkest Secret : ";
 	std::getline(std::cin, dark_sec);
@@ -75,6 +62,7 @@ void   PhoneBook::promptAddContact()
 	contact.setContact(first_name, last_name, nick_name, phone_num, dark_sec);
 	addContact(contact);
 }
+
 void PhoneBook::promptIndexAndDisplay() const
 {
     displayContacts();
@@ -102,4 +90,53 @@ void PhoneBook::promptIndexAndDisplay() const
         return ;
     }
     displayContactDetails(idx);
+}
+
+void PhoneBook::addContact(const Contact &c)
+{
+    contacts[nextIndex] = c;
+
+    nextIndex = (nextIndex + 1) % 8;
+
+    if (totalContacts < 8)
+        totalContacts++;
+}
+
+void PhoneBook::displayContactDetails(int index) const
+{
+    std::cout << "First Name : "
+        << contacts[index].getField(Contact::FIRST_NAME)<< std::endl;
+    std::cout << "Last Name : "
+        << contacts[index].getField(Contact::LAST_NAME) << std::endl;
+    std::cout << "Nickname : "
+        << contacts[index].getField(Contact::NICKNAME) << std::endl;
+    std::cout << "Phone Number : "
+        << contacts[index].getField(Contact::PHONE_NUMBER) << std::endl;
+    std::cout << "Darkest Secret : "
+        << contacts[index].getField(Contact::DARKEST_SECRET) << std::endl;
+}
+
+
+void PhoneBook::displayContacts() const
+{
+    if (totalContacts == 0)
+    {
+        std::cout << "PhoneBook is empty." << std::endl;
+        return ;
+    }
+
+    std::cout << std::setw(10) << "Index" << "|"
+        << std::setw(10) << "First Name" << "|"
+        << std::setw(10) << "Last Name" << "|"
+        << std::setw(10) << "Nickname" << "|"
+        << std::endl;
+
+    for (int i = 0; i < totalContacts; i++)
+    {
+        std::cout << std::setw(10) << i << "|"
+            << std::setw(10) << formatField(contacts[i].getField(Contact::FIRST_NAME)) << "|"
+            << std::setw(10) << formatField(contacts[i].getField(Contact::LAST_NAME)) << "|"
+            << std::setw(10) << formatField(contacts[i].getField(Contact::NICKNAME))
+            << std::endl;
+    }
 }
