@@ -83,15 +83,16 @@ void   PhoneBook::promptAddContact()
 		std::cout << "\033[0;30m× All fields must be non-empty!\033[0m" << std::endl;
 		return ;
 	}
-    if (checkingCommands(first_name, last_name, phone_num) == F_NAME){
+    int result = checkingCommands(first_name, last_name, phone_num);
+    if (result == F_NAME){
         std::cout << "\033[0;30m× First Name format is incorrect! Use only letters.\033[0m\n";
         return ;
-    }
-    else if (checkingCommands(first_name, last_name, phone_num) == L_NAME){
+    } 
+    else if (result == L_NAME){
         std::cout << "\033[0;30m× Last Name format is incorrect! Use only letters.\033[0m\n";
         return ;
     }
-    else if (checkingCommands(first_name, last_name, phone_num) == P_NUMBER){
+    else if (result == P_NUMBER){
         std::cout << "\033[0;30m× Phone Number format is incorrect! Use only digits.\033[0m\n";
         return ;
     }

@@ -3,6 +3,7 @@
 
 #include "Contact.hpp"
 #include <cstdlib>
+#include <cctype>
 #include <iostream>
 #include <iomanip>
 
