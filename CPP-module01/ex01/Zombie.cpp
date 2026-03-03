@@ -1,28 +1,21 @@
 #include "Zombie.hpp"
 
+Zombie::Zombie() : _name("Default")
+{
+	//std::cout << "Zombie created!" << std::endl;
+}
+
 Zombie::Zombie(std::string name) : _name(name)
 {
+	//std::cout << "Zombie " << this->_name << " created!" << std::endl;
 }
 
-Zombie::~Zombie(void)
+Zombie::~Zombie()
 {
+	//std::cout << "Zombie " << this->_name << " destroyed!" << std::endl;
 }
 
-void Zombie::announce(void) const
+void Zombie::announce() const
 {
-    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-Zombie* Zombie::zombieHorde(int N, std::string name)
-{
-    if (N <= 0)
-        return NULL;
-
-    Zombie* horde = new Zombie[N];
-
-    for (int i = 0; i < N; i++)
-    {
-        horde[i] = Zombie(name);
-    }
-    return horde;
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
