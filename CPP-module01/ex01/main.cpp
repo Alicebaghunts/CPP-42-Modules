@@ -2,7 +2,7 @@
 
 int	main(void)
 {
-	Zombie *z1 = zombieHorde(5, "Alice");
+	Zombie *z1 = zombieHorde(5, "Noro");
 
 	if (z1)
 	{
@@ -13,7 +13,7 @@ int	main(void)
 		delete[] z1;
 	}
 
-	Zombie *z2 = zombieHorde(1, "Larice");
+	Zombie *z2 = zombieHorde(1, "Hajox");
 
 	if (z2)
 	{
