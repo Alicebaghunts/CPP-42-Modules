@@ -73,6 +73,8 @@ int main(int argc, char** argv)
     std::string s1 = argv[2];
     std::string s2 = argv[3];
 
+    if (s1.empty())
+        return (exitWithError("\033[91ms1 can't be epty string\033[0m"));
     if (!processFile(filename, s1, s2))
     {
         if (std::ifstream(filename.c_str()).is_open() == false)
