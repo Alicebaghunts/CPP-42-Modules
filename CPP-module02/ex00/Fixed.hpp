@@ -4,12 +4,13 @@
 class Fixed
 {
 private:
-	int					_value;
-	static const int	_fractionalBits = 8;
+	int	_value;
+	static const int _fractionalBits = 8;
 
 public:
-	Fixed(void);
-	Fixed(Fixed const& other);
+	Fixed(void);//canstructor
+	Fixed(Fixed const& other);// copy constructor
+
 	Fixed& operator=(Fixed const& rhs);
 	~Fixed(void);
 

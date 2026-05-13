@@ -11,7 +11,7 @@ private:
 
 public:
 	Fixed(void);
-	Fixed(int const n);
+	Fixed(int const i);
 	Fixed(float const f);
 	Fixed(Fixed const& other);
 	Fixed& operator=(Fixed const& rhs);
