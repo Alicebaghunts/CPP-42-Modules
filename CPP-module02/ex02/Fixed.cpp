@@ -175,9 +175,9 @@ Fixed const &Fixed::max(Fixed const &a, Fixed const &b)
 		return (b);
 }
 
-std::ostream &operator<<(std::ostream &o, Fixed const &rhs)
+std::ostream &operator<<(std::ostream &out, Fixed const &rhs)
 {
-	if (&o && true)
-		o << rhs.toFloat();
-	return (o);
+	if (&out && true)
+		out << rhs.toFloat();
+	return (out);
 }
