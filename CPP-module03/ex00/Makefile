@@ -11,7 +11,7 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
 
-%.o: %.cpp Fixed.hpp
+%.o: %.cpp ClapTrap.hpp 
 	${CXX} ${CXXFLAGS} -c $< -o $@
 
 clean:
