@@ -26,7 +26,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 		_energyPoints = other._energyPoints;
 		_attackDamage = other._attackDamage;
 	}
-	std::cout << "ClapTrap assigned" << std::endl;
+	std::cout << "ClapTrap assignment operator called" << std::endl;
 	return *this;
 }
 
