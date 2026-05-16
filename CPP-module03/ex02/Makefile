@@ -7,10 +7,10 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) 
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.cpp
+%.o: %.cpp ClapTrap.hpp FragTrap.hpp ScavTrap.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
