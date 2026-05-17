@@ -1,46 +1,51 @@
-
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 #include <iostream>
 
-int	main(void)
+int main()
 {
-	const Animal* animal = new Animal();
-	std::cout << " ------ Hi, I am a " << animal->getType() << " ------" << std::endl;
-	animal->makeSound();
-	delete animal;
-	std::cout << std::endl;
-	
-	
-	const Animal* dog = new Dog();
-	std::cout << " ------ Hi, I am a " << dog->getType() << " ------" << std::endl;
-	dog->makeSound();
-	delete dog;
-	std::cout << std::endl;
-	
-	
-	const Animal* cat = new Cat();
-	std::cout << " ------ Hi, I am a " << cat->getType() << " ------" << std::endl;
-	cat->makeSound();
-	delete cat;
-	std::cout << std::endl;
+	std::cout << "\n.........POLYMORPHISM TEST.........\n" << std::endl;
 
+	const Animal* a = new Dog();
+	const Animal* b = new Cat();
 
-	const WrongAnimal* wrong_animal = new WrongAnimal();
-	std::cout << " ------ Hi, I am a " << wrong_animal->getType() << " ------" << std::endl;
-	wrong_animal->makeSound();
-	delete wrong_animal;
-	std::cout << std::endl;
+	std::cout << a->getType() << std::endl;
+	std::cout << b->getType() << std::endl;
 
+	a->makeSound();
+	b->makeSound();
 
-	const WrongAnimal* wrong_cat = new WrongCat();
-	std::cout << " ------ Hi, I am a " << wrong_cat->getType() << " ------" << std::endl;
-	wrong_cat->makeSound();
-	delete wrong_cat;
-	std::cout << std::endl;
+	std::cout << "\n.............ARRAY TEST............\n" << std::endl;
 
-	return (0);
+	const Animal* animals[4];
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (i < 2)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
+
+	for (int i = 0; i < 4; i++)
+		animals[i]->makeSound();
+
+	for (int i = 0; i < 4; i++)
+		delete animals[i];
+
+	std::cout << "\n..............COPY TEST.............\n" << std::endl;
+
+	Dog x;
+	Dog y = x;
+	Dog z;
+
+	z = x;
+
+	std::cout << "\n.................DONE...............\n" << std::endl;
+
+	delete a;
+	delete b;
+
+	return 0;
 }

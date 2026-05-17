@@ -4,6 +4,9 @@
 #include <string>
 #include <iostream>
 
+# define GREEN "\033[32m"
+# define RESET "\033[0m"
+
 class Brain
 {
 private:
@@ -16,7 +19,7 @@ public:
     Brain &operator=(const Brain &other);
     ~Brain();
 
-    void        setIdea(unsigned int index, std::string idea);
+    void setIdea(unsigned int index, std::string idea);
     std::string getIdea(unsigned int index) const;
 };
 

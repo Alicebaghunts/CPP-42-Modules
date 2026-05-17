@@ -6,15 +6,17 @@
 
 class Cat : public Animal
 {
-    private:
-        Brain *brain;
-    public :
-        Cat();
-        Cat(const Cat& other);
-        Cat& operator=(const Cat& other);
-        ~Cat();
+	private:
+		Brain* brain;
 
-        void makeSound() const;
+	public:
+		Cat();
+		Cat(const Cat& other);
+		Cat& operator=(const Cat& other);
+		~Cat();
+
+		void makeSound() const;
+
 };
 
 #endif
