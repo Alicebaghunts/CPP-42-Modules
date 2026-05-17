@@ -9,9 +9,8 @@
 
 class Brain
 {
-private:
-    static const unsigned int size = 100;
-    std::string ideas[size];
+  private:
+	std::string ideas[100];
 
 public:
     Brain();
