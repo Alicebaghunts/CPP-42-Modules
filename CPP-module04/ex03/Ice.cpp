@@ -26,7 +26,6 @@ Ice::~Ice()
 
 AMateria* Ice::clone() const
 {
-    std::cout << SOFT_PURPLE << "[Ice]" << RESET << " clone() called" << std::endl;
     return new Ice(*this);
 }
 

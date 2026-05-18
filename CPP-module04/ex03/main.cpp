@@ -41,5 +41,7 @@ int main()
 	delete me;
 	delete src;
 
+    delete tmp;
+    delete tmp2;
 	return 0;
 }

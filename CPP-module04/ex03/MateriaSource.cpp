@@ -1,4 +1,5 @@
 #include "MateriaSource.hpp"
+#include "AMateria.hpp"
 
 MateriaSource::MateriaSource()
 {
@@ -18,11 +19,11 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other)
 		for (int i = 0; i < 4; i++)
 		{
 			if (_storage[i])
+			{
 				delete _storage[i];
-			_storage[i] = NULL;
-
-			if (other._storage[i])
-				_storage[i] = other._storage[i]->clone();
+				_storage[i] = NULL;
+			}
+			_storage[i] = other._storage[i] ? other._storage[i]->clone() : NULL;
 		}
 	}
 	return *this;
@@ -51,7 +52,6 @@ void MateriaSource::learnMateria(AMateria* m)
 			return;
 		}
 	}
-	// storage full: delete passed materia to avoid leak
 	delete m;
 }
 

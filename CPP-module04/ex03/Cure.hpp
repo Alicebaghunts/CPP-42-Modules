@@ -3,6 +3,8 @@
 
 # include "AMateria.hpp"
 
+class ICharacter;
+
 class Cure : public AMateria
 {
 	public:

@@ -1,3 +1,4 @@
+#include "AMateria.hpp"
 #include "Character.hpp"
 
 Character::Character() : _name("default"), _floorCount(0)
@@ -16,12 +17,14 @@ Character::Character(const std::string name) : _name(name), _floorCount(0)
 		_floor[i] = NULL;
 }
 
-Character::Character(const Character& other) : _name("default"), _floorCount(0)
+Character::Character(const Character& other) 
+    : _name(other._name), _floorCount(other._floorCount)
 {
 	for (int i = 0; i < 4; i++)
 		_inventory[i] = NULL;
 	for (int i = 0; i < 100; i++)
 		_floor[i] = NULL;
+
 	*this = other;
 }
 
@@ -31,34 +34,24 @@ Character& Character::operator=(const Character& other)
 	{
 		_name = other._name;
 
-        for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 4; i++)
 		{
 			if (_inventory[i])
 			{
 				delete _inventory[i];
 				_inventory[i] = NULL;
 			}
+			_inventory[i] = other._inventory[i] ? other._inventory[i]->clone() : NULL;
 		}
 
-        for (int i = 0; i < 4; i++)
-		{
-			if (other._inventory[i])
-				_inventory[i] = other._inventory[i]->clone();
-			else
-				_inventory[i] = NULL;
-		}
-	
-        for (int i = 0; i < 100; i++)
+		for (int i = 0; i < 100; i++)
 		{
 			if (_floor[i])
 			{
 				delete _floor[i];
 				_floor[i] = NULL;
 			}
-			if (other._floor[i])
-				_floor[i] = other._floor[i]->clone();
-			else
-				_floor[i] = NULL;
+			_floor[i] = other._floor[i] ? other._floor[i]->clone() : NULL;
 		}
 		_floorCount = other._floorCount;
 	}

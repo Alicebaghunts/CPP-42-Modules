@@ -26,7 +26,6 @@ Cure::~Cure()
 
 AMateria* Cure::clone() const
 {
-    std::cout << DUSTY_BLUE << "[Cure]" << RESET << " clone() called" << std::endl;
     return new Cure(*this);
 }
 
