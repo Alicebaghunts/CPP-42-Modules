@@ -6,16 +6,19 @@
 
 class Dog : public AAnimal
 {
-  private:
+private:
 	Brain *_brain;
 
-  public:
+public:
 	Dog();
 	Dog(const Dog &other);
 	Dog &operator=(const Dog &other);
 	~Dog();
 
 	void makeSound() const;
+
+	void setIdea(unsigned int index, std::string idea);
+	std::string getIdea(unsigned int index) const;
 };
 
 #endif

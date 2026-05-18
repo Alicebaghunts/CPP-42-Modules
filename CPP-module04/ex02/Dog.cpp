@@ -37,3 +37,16 @@ void Dog::makeSound(void) const
 	std::cout << GREEN << "[Dog]" << RESET
 		<< " Woof! Woof!" << std::endl;
 }
+
+void Dog::setIdea(unsigned int index, std::string idea)
+{
+	if (_brain)
+		_brain->setIdea(index, idea);
+}
+
+std::string Dog::getIdea(unsigned int index) const
+{
+	if (_brain)
+		return _brain->getIdea(index);
+	return "No brain...";
+}

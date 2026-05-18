@@ -22,7 +22,7 @@ Cat& Cat::operator=(const Cat& other)
 	}
 	std::cout << GREEN << "[Cat]" << RESET
 		<< " assignment operator called" << std::endl;
-	return (*this);
+	return *this;
 }
 
 Cat::~Cat(void)
@@ -36,4 +36,17 @@ void Cat::makeSound(void) const
 {
 	std::cout << GREEN << "[Cat]" << RESET
 		<< " Meow! Meow!" << std::endl;
+}
+
+void Cat::setIdea(unsigned int index, std::string idea)
+{
+	if (_brain)
+		_brain->setIdea(index, idea);
+}
+
+std::string Cat::getIdea(unsigned int index) const
+{
+	if (_brain)
+		return _brain->getIdea(index);
+	return "No brain...";
 }
