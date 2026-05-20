@@ -3,8 +3,7 @@
 #include "Cure.hpp"
 #include "MateriaSource.hpp"
 
-int main()
-{
+int main() {
 	std::cout << "............ MATERIA SOURCE TEST ............\n" << std::endl;
 
 	IMateriaSource* src = new MateriaSource();
