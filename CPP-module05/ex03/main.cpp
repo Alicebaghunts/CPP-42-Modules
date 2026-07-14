@@ -40,7 +40,7 @@ int main()
     }
 
     std::cout << "\n" << DUSTY_BLUE << "[Presidential Pardon]" << RESET << std::endl;
-    form = someRandomIntern.makeForm("presidential pardon", "Arthur");
+    form = someRandomIntern.makeForm("presidential pardon", "Hayaser");
     if (form)
     {
         std::cout << SAGE_GREEN << *form << RESET << std::endl;
@@ -51,7 +51,7 @@ int main()
     }
 
     std::cout << "\n" << DUSTY_BLUE << "[Invalid Form]" << RESET << std::endl;
-    form = someRandomIntern.makeForm("coffee", "Bob");
+    form = someRandomIntern.makeForm("Yanus", "Bob");
     if (form)
         delete form;
 

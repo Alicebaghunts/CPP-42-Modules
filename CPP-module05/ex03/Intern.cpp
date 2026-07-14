@@ -5,15 +5,15 @@
 
 typedef AForm *(*FormCreator)(const std::string &target);
 
-static AForm *createShrubbery(const std::string &target) {
+AForm *createShrubbery(const std::string &target) {
     return new ShrubberyCreationForm(target);
 }
 
-static AForm *createRobotomy(const std::string &target) {
+AForm *createRobotomy(const std::string &target) {
     return new RobotomyRequestForm(target);
 }
 
-static AForm *createPardon(const std::string &target) {
+AForm *createPardon(const std::string &target) {
     return new PresidentialPardonForm(target);
 }
 
@@ -28,12 +28,13 @@ Intern &Intern::operator=(const Intern &) {
 Intern::~Intern() { }
 
 AForm *Intern::makeForm(const std::string &formName, const std::string &target) const {
-    struct FormEntry {
+    struct FormEntry
+	{
         const char *name;
         FormCreator creator;
     };
 
-    static const FormEntry table[] = {
+    const FormEntry table[] = {
 		{ "shrubbery creation", createShrubbery },
 		{ "robotomy request", createRobotomy },
 		{ "presidential pardon", createPardon }
@@ -44,7 +45,7 @@ AForm *Intern::makeForm(const std::string &formName, const std::string &target) 
 		if (formName == table[i].name)
 		{
 			AForm *form = table[i].creator(target);
-			
+
 			std::cout << "Intern creates " << table[i].name << std::endl;
 			return form;
 		}
