@@ -1,9 +1,9 @@
-NAME        = serializer
+NAME        = identify
 
 CC          = c++
 
 SRCS        = main.cpp \
-              Serializer.cpp \
+              Base.cpp \
 
 OBJS        = $(SRCS:%.cpp=%.o)
 
