@@ -14,6 +14,7 @@
 #define ERROR_RED "\033[38;2;220;40;40m"
 #define RESET       "\033[0m"
 
+
 class ScalarConverter
 {
 private:
