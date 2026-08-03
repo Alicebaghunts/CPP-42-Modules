@@ -84,7 +84,7 @@ int main()
 	Array<std::string> words(3);
 
 	words[0] = "Hello";
-	words[1] = "42";
+	words[1] = "MyAlice";
 	words[2] = "School";
 
 	for (unsigned int i = 0; i < words.size(); i++)
