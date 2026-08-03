@@ -5,13 +5,13 @@
 
 #define SAGE_GREEN   "\033[38;2;163;177;138m"
 #define DUSTY_BLUE   "\033[38;2;109;130;153m"
-#define SOFT_PURPLE  "\033[38;2;150;120;170m"
+#define PURPLE       "\033[38;2;150;120;170m"
 #define RESET        "\033[0m"
 
 
 int main()
 {
-    std::cout << SOFT_PURPLE;
+    std::cout << PURPLE;
     std::cout << "---------------------------------------" << std::endl;
     std::cout << "        CPP06 EX01 - SERIALIZER        " << std::endl;
     std::cout << "---------------------------------------" << RESET << std::endl;
@@ -43,7 +43,7 @@ int main()
 
 
 
-    std::cout << SOFT_PURPLE;
+    std::cout << PURPLE;
     std::cout << "\n[ Serialization ]" << RESET << std::endl;
 
     uintptr_t raw = Serializer::serialize(original);
@@ -54,7 +54,7 @@ int main()
 
 
 
-    std::cout << SOFT_PURPLE;
+    std::cout << PURPLE;
     std::cout << "\n[ Deserialization ]" << RESET << std::endl;
 
     Data* restored = Serializer::deserialize(raw);
@@ -76,7 +76,7 @@ int main()
 
 
     if (original == restored) {
-        std::cout << SOFT_PURPLE;
+        std::cout << PURPLE;
         std::cout << "SUCCESS: Same address restored!" 
                   << RESET << std::endl;
     }
@@ -88,7 +88,7 @@ int main()
 
 
 
-    std::cout << SOFT_PURPLE;
+    std::cout << PURPLE;
     std::cout << "\n---------------------------------------" << std::endl;
     std::cout << "        TEST FINISHED SUCCESSFULLY     " << std::endl;
     std::cout << "---------------------------------------" << RESET << std::endl;

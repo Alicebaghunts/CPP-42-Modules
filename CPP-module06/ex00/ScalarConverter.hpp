@@ -11,7 +11,8 @@
 #define SAGE_GREEN  "\033[38;2;163;177;138m"
 #define DUSTY_BLUE  "\033[38;2;109;130;153m"
 #define SOFT_PURPLE "\033[38;2;150;120;170m"
-#define ERROR_RED "\033[38;2;220;40;40m"
+#define PURPLE      "\033[38;2;150;120;170m"
+#define ERROR_RED   "\033[38;2;220;40;40m"
 #define RESET       "\033[0m"
 
 
