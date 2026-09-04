@@ -1,6 +1,5 @@
 #include "MutantStack.hpp"
 #include <iostream>
-#include <string>
 
 int main()
 {
