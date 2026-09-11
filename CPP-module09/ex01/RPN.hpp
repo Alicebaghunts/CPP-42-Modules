@@ -9,8 +9,8 @@
 class RPN
 {
 private:
-	bool isOperator(char c) const;
-	int apply(int a, int b, char op) const;
+	bool	isOperator(char c) const;
+	int		calculate(int a, int b, char op) const;
 
 public:
 	RPN();
@@ -18,7 +18,7 @@ public:
 	RPN &operator=(const RPN &other);
 	~RPN();
 
-	int evaluate(const std::string &expr) const;
+	int calculateExpression(const std::string &expr) const;
 };
 
 #endif

@@ -3,7 +3,9 @@
 #include <stack>
 #include <stdexcept>
 
-RPN::RPN() {}
+RPN::RPN() { }
+
+RPN::~RPN() { }
 
 RPN::RPN(const RPN &other)
 {
@@ -16,14 +18,12 @@ RPN &RPN::operator=(const RPN &other)
 	return *this;
 }
 
-RPN::~RPN() {}
-
 bool RPN::isOperator(char c) const
 {
 	return c == '+' || c == '-' || c == '*' || c == '/';
 }
 
-int RPN::apply(int a, int b, char op) const
+int RPN::calculate(int a, int b, char op) const
 {
 	if (op == '+')
 		return a + b;
@@ -40,7 +40,7 @@ int RPN::apply(int a, int b, char op) const
 	throw std::runtime_error("Error");
 }
 
-int RPN::evaluate(const std::string &expr) const
+int RPN::calculateExpression(const std::string &expr) const
 {
 	std::stack<int> st;
 	std::stringstream ss(expr);
@@ -53,12 +53,12 @@ int RPN::evaluate(const std::string &expr) const
 		else if (token.size() == 1 && isOperator(token[0]))
 		{
 			if (st.size() < 2)
-				throw std::runtime_error("Error");
+				throw std::runtime_error("Error");//piti 2 hat ini ver avelacninnq
 			int b = st.top();
 			st.pop();
 			int a = st.top();
 			st.pop();
-			st.push(apply(a, b, token[0]));
+			st.push(calculate(a, b, token[0]));
 		}
 		else
 			throw std::runtime_error("Error");
