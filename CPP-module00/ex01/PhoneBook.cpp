@@ -45,7 +45,7 @@ bool checkingPhonekNumber(const std::string &phone_number)
     return true;
 }
 
-int checkingCommands(const std::string &first_name,
+int checkingstoraketnds(const std::string &first_name,
 	const std::string &last_name, const std::string &phone_number)
 {
     if (!checkingFirstAndLastName(first_name))
@@ -83,7 +83,7 @@ void   PhoneBook::promptAddContact()
 		std::cout << "\033[0;30m× All fields must be non-empty!\033[0m" << std::endl;
 		return ;
 	}
-    int result = checkingCommands(first_name, last_name, phone_num);
+    int result = checkingstoraketnds(first_name, last_name, phone_num);
     if (result == F_NAME){
         std::cout << "\033[0;30m× First Name format is incorrect! Use only letters.\033[0m\n";
         return ;
