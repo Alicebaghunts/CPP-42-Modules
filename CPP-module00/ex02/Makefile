@@ -6,8 +6,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 HEADER = Account.hpp 
 
-SRC  = Account.cpp \
-		tests.cpp \
+SRC  = Account.cpp tests.cpp 
 
 OBJ  = $(SRC:.cpp=.o)
 
